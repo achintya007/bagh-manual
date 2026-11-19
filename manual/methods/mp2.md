@@ -31,6 +31,7 @@ $E_\mathrm{SS} = \sum (ia|jb)\left[(ia|jb) - (ib|ja)\right] / D_{ijab}$.
 |  |  |
 |---|---|
 | References | RHF |
+| Hamiltonians | nonrel, sfx2c1e |
 | Integrals | exact, ri, cd |
 | Incore levels | 2, 3, 4, 5 |
 | Properties | none yet |
@@ -39,7 +40,8 @@ $E_\mathrm{SS} = \sum (ia|jb)\left[(ia|jb) - (ib|ja)\right] / D_{ijab}$.
 ## Keywords used
 
 `df`, `auxbasis`, `jkbasis` (RI), `cd`, `cd_threshold` (Cholesky),
-`fc`, `fc_no` (frozen core), and the
+`fc`, `fc_no` (frozen core), `hamiltonian` (e.g. SFX2C1e, see
+[References and Hamiltonians](../references.md)), and the
 [run settings](../run_settings.md) (`maxcore`, `incore`, `nthreads`). See the
 [keyword list](../input/keywords.md).
 
