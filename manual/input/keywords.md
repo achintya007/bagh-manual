@@ -11,9 +11,11 @@ Every keyword can be given as a one-line `%keyword value` or inside any
 |---|---|---|---|
 | `method` | str | `HF` | Method, given on the `!` line (e.g. `MP2`). |
 | `basis` | str | `sto-3g` | Orbital basis set, given on the `!` line. |
-| `df` | bool | `False` | Use density fitting: DF-SCF (with `jkbasis`) and RI for the correlated method (with `auxbasis`). Also `! DF` or `! RI`. |
+| `df` | bool | `False` | Density fitting with an auxiliary basis (RI): DF-SCF (with `jkbasis`) and RI for the correlated method (with `auxbasis`). Also `! DF` or `! RI`. |
 | `auxbasis` | str |  | Auxiliary basis for density fitting. Empty: chosen automatically for the orbital basis. |
 | `jkbasis` | str |  | Auxiliary basis for DF-SCF. Empty: chosen automatically. Also on the `!` line (`...jkfit`). |
+| `cd` | bool | `False` | Cholesky decomposition of the two-electron integrals for the correlated method (no auxiliary basis; SCF follows `df`). Also `! CD`. |
+| `cd_threshold` | float | `1e-05` | Cholesky decomposition threshold: largest remaining diagonal (Eh). |
 | `fc` | bool | `False` | Freeze core orbitals (standard chemical core). |
 | `fc_no` | int | `-1` | Number of frozen core orbitals; overrides `fc`. -1: not set. |
 

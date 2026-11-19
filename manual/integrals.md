@@ -1,13 +1,37 @@
 # Integral approximations
 
-| Option | Keyword | SCF | Correlated method |
-|---|---|---|---|
-| Exact | (default) | exact 4-index integrals | exact $(pq\|rs)$ |
-| Density fitting | `DF` / `RI` on the `!` line, or `df true` | DF with `jkbasis` | RI with `auxbasis` |
+The two-electron integrals of the correlated method can be computed exactly or
+approximated by a product of 3-centre factors,
+$(pq|rs) \approx \sum_P L^P_{pq} L^P_{rs}$. BAGH offers two ways to make the factors:
 
-If `auxbasis` / `jkbasis` are not given, a standard fitting basis for the
-orbital basis is chosen automatically. Give them explicitly when results must be
-reproducible across program versions.
+| Option | How to request | SCF | Factors $L^P_{pq}$ | Accuracy set by |
+|---|---|---|---|---|
+| Exact | (default) | exact | none | — |
+| RI (density fitting) | `! DF` or `! RI`, or `df true` | density fitted with `jkbasis` | auxiliary basis `auxbasis` | choice of auxiliary basis |
+| Cholesky decomposition (CD) | `! CD`, or `cd true` | exact (or DF with `df true`) | pivoted Cholesky vectors of the AO integrals | `cd_threshold` (default $10^{-5}$) |
 
-Cholesky decomposition (CD) and tensor hypercontraction (THC) will be added as
-methods that use them are ported.
+- **RI** uses a pre-optimised auxiliary basis. If `auxbasis` / `jkbasis` are not
+  given, standard fitting bases for the orbital basis are chosen. Give them
+  explicitly when results must be reproducible across program versions.
+- **CD** needs no auxiliary basis: vectors are added until the largest remaining
+  diagonal integral is below `cd_threshold`, so the error is controlled by one
+  number and goes to zero as the threshold is tightened. At most $10\,n_\mathrm{AO}$
+  vectors are made (as in BAGH 0.x); for very tight thresholds BAGH stops and asks
+  for a larger `cd_threshold`. The Cholesky vectors are identical to those of
+  BAGH 0.x.
+
+## Where the 3-centre factors are kept
+
+Both kinds of factors are always built and stored according to the
+[incore level](run_settings.md):
+
+<!-- GENERATED:factor-storage -->
+| Factor | incore 5 | incore 4 | incore 3 | incore 2 |
+|---|---|---|---|---|
+| AO factors (RI integrals or Cholesky vectors) | memory | memory | memory | disk |
+| $L_{oo}$ | memory | memory | memory | memory |
+| $L_{ov}$ | memory | memory | memory | memory |
+| $L_{vv}$ | memory | memory | memory | disk |
+<!-- END GENERATED -->
+
+On disk the factors are built and read in chunks whose size is set by `maxcore`.

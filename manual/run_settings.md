@@ -31,9 +31,9 @@ Higher levels are faster and need more memory:
 | incore | What is kept on disk (everything else is in memory) |
 |---|---|
 | `5` | Everything in memory. |
-| `4` | On disk: vvvv integrals, and amplitudes of rank higher than doubles (triples and beyond). |
-| `3` | On disk: vvvv and ovvv integrals, and amplitudes of rank higher than doubles. |
-| `2` | On disk: vvvv, ovvv, ovov and ovvo integrals, the vv block of the 3-centre factors (L_vv), and all amplitudes. |
+| `4` | On disk: vvvv integrals; amplitudes of rank higher than doubles (triples and beyond). |
+| `3` | On disk: vvvv integrals; ovvv integrals; amplitudes of rank higher than doubles (triples and beyond). |
+| `2` | On disk: vvvv integrals; ovvv integrals; ovov integrals; ovvo integrals; 3-centre factors in the AO basis (RI integrals or Cholesky vectors); vv block of the MO 3-centre factors (L_vv); all amplitudes. |
 <!-- END GENERATED -->
 
 By default BAGH estimates the memory each level needs and **chooses the highest

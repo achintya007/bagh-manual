@@ -7,7 +7,7 @@ properties each method supports:
 | Method | Description | References | Integrals | Incore levels | Properties |
 |---|---|---|---|---|---|
 | HF | Hartree-Fock only (no correlated method). | RHF | exact | - | - |
-| [MP2](mp2.md) | Second-order Moller-Plesset perturbation theory. | RHF | exact, df | 2, 3, 4, 5 | - |
+| [MP2](mp2.md) | Second-order Moller-Plesset perturbation theory. | RHF | exact, ri, cd | 2, 3, 4, 5 | - |
 <!-- END GENERATED -->
 
 ```{toctree}
