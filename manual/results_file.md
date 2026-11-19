@@ -23,5 +23,8 @@ element for the SCF (`scf`) and the correlated method (`correlation`), how each
 was chosen (`input`, `matching`, `fallback`, `generated`) and the number of
 auxiliary functions (`naux`).
 
+`files` lists the files written for visualisation (Molden, cube; see
+[Visualising orbitals](visualisation.md)).
+
 Energies are in hartree. `schema_version` changes only when existing fields
 change meaning or are removed.

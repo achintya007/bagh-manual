@@ -25,6 +25,7 @@ references
 integrals
 methods/index
 properties
+visualisation
 results_file
 python_api
 troubleshooting
