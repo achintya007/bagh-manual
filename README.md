@@ -13,3 +13,11 @@ Build locally:
 pip install -r requirements.txt
 sphinx-build -W manual _build/html
 ```
+
+## Licence
+
+The manual is licensed under the
+[Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/);
+see [LICENSE](LICENSE). You may share and adapt it, including commercially, if you
+give appropriate credit to the BAGH developers, link to the licence, and indicate
+if changes were made. The licence covers this manual only, not the BAGH program.

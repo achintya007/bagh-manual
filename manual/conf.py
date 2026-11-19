@@ -2,6 +2,7 @@
 
 project = "BAGH"
 author = "BAGH developers"
+copyright = "2026, BAGH developers. Manual licensed under CC BY 4.0"
 release = "1.0.0.dev0"
 
 extensions = [

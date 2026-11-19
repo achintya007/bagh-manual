@@ -34,3 +34,9 @@ developer
 ## Citing BAGH
 
 <!-- TODO: citation -->
+
+## Licence of this manual
+
+This manual is licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The licence covers the
+manual only, not the BAGH program.
