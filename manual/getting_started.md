@@ -19,15 +19,25 @@ bagh water_mp2.inp
 
 ## Output
 
-The output lists the SCF energy, the incore level chosen for the memory
-available, and the MP2 energies:
+The output file contains, in order:
 
-```text
-  e_corr_os         opposite-spin correlation energy
-  e_corr_ss         same-spin correlation energy
-  e_corr            total correlation energy
-  e_total           SCF + correlation energy
-```
+1. the BAGH logo, version, development team and external contributors;
+2. a copy of the input file;
+3. a job summary (method, reference, Hamiltonian, basis, integrals, frozen core,
+   memory, threads);
+4. the molecule (coordinates in Angstrom, number of basis functions and
+   electrons, nuclear repulsion energy);
+5. the SCF iterations (energy, energy change, gradient norm, density change)
+   and the converged energy;
+6. all orbital energies (spinor energies for DHF) in Eh and eV with
+   occupations, the frozen-core orbitals marked, and the HOMO–LUMO gap;
+7. the correlated method: frozen core, active orbitals, incore level, and the
+   energies (for MP2 with RHF: opposite-spin, same-spin, correlation and total
+   energy);
+8. the total run time.
+
+`printlevel 3` adds timings, memory use and batch sizes; `printlevel 1` prints
+only the final energies.
 
 All numbers are also written to `water_mp2.results.json`
 (see [Results file](results_file.md)), which is the file to read from scripts.

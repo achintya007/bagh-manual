@@ -77,7 +77,9 @@ vectors and the SCF is exact. See [Integral approximations](../integrals.md).
 - At `incore 5`–`3`, $(ia|jb)$ is held in memory. At `incore 2` it is on disk
   (exact) or rebuilt in batches from $L_{ov}$ (RI, CD), and the batch size is
   chosen from `maxcore`.
-- Use `DF` or `CD` for anything but small molecules. CD with the default
+- Use `DF` or `CD` for anything but small molecules.
+- Core orbitals are frozen by default (`fc true`); use `fc false` or `! NOFC`
+  for all-electron MP2. CD with the default
   threshold ($10^{-5}$) changes the MP2 energy by about $10^{-6}$ $E_h$.
 
 ## Limitations

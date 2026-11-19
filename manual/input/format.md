@@ -18,7 +18,9 @@ H -1.638   1.137  0.000
 
 - Everything after `#` is a comment.
 - **`!` line:** the method name, the orbital basis set and any of these flags:
-  `Bohr`, `Angstrom` (default), `DF` or `RI` (density fitting), `FC` (frozen core).
+  `Bohr`, `Angstrom` (default), `DF` or `RI` (density fitting), `CD` (Cholesky),
+  `DHF` (four-component reference), `SFX2C1E`, `FC` / `NOFC` (frozen core on / off;
+  **on by default**, unlike BAGH 0.x).
   A word ending in `-ri` (e.g. `cc-pvdz-ri`) sets the RI auxiliary basis
   (`auxbasis`); a word ending in `jkfit` (e.g. `ccpvdzjkfit`) sets the DF-SCF basis
   (`jkbasis`).
