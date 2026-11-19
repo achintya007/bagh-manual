@@ -3,7 +3,8 @@
 ## What it computes
 
 Second-order Møller–Plesset perturbation theory (MP2) correlation energy for a
-closed-shell RHF reference, split into opposite-spin and same-spin parts.
+closed-shell RHF reference (split into opposite-spin and same-spin parts) or a
+four-component DHF reference.
 
 ## Theory and references
 
@@ -16,9 +17,23 @@ $$
 with $E_\mathrm{OS} = \sum (ia|jb)^2 / D_{ijab}$ and
 $E_\mathrm{SS} = \sum (ia|jb)\left[(ia|jb) - (ib|ja)\right] / D_{ijab}$.
 
+With a DHF reference the sums run over positive-energy spinors and the integrals
+are complex:
+
+$$
+E^{(2)} = \frac{1}{4}\sum_{ijab}
+\frac{\left|\langle ij\|ab\rangle\right|^2}{\varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b},
+\qquad \langle ij\|ab\rangle = (ia|jb) - (ib|ja),
+$$
+
+with Dirac–Coulomb integrals over the large and small components. Only
+$E^{(2)}$ is reported (no spin components).
+
 - C. Møller and M. S. Plesset, *Phys. Rev.* **46**, 618 (1934).
 - A. Szabo and N. S. Ostlund, *Modern Quantum Chemistry*, eq. (6.74).
 - S. Grimme, *J. Chem. Phys.* **118**, 9095 (2003) (spin components).
+- DHF-MP2: L. Visscher, K. G. Dyall and T. J. Lee, *Int. J. Quantum Chem. Symp.*
+  **29**, 411 (1995).
 - With `DF` (RI): M. Feyereisen, G. Fitzgerald and A. Komornicki, *Chem. Phys. Lett.*
   **208**, 359 (1993); F. Weigend and M. Häser, *Theor. Chem. Acc.* **97**, 331 (1997).
 - With `CD`: H. Koch, A. Sánchez de Merás and T. B. Pedersen, *J. Chem. Phys.*
@@ -30,9 +45,9 @@ $E_\mathrm{SS} = \sum (ia|jb)\left[(ia|jb) - (ib|ja)\right] / D_{ijab}$.
 <!-- GENERATED:method:MP2 -->
 |  |  |
 |---|---|
-| References | RHF |
-| Hamiltonians | nonrel, sfx2c1e |
-| Integrals | exact, ri, cd |
+| References | RHF, DHF |
+| Hamiltonians | RHF: nonrel, sfx2c1e<br>DHF: dirac-coulomb |
+| Integrals | RHF: exact, ri, cd<br>DHF: exact |
 | Incore levels | 2, 3, 4, 5 |
 | Properties | none yet |
 <!-- END GENERATED -->
@@ -67,5 +82,6 @@ vectors and the SCF is exact. See [Integral approximations](../integrals.md).
 
 ## Limitations
 
-- RHF reference only (UHF, GHF and relativistic references: not yet ported).
+- RHF and DHF references (UHF, GHF and two-component spinor references: not yet ported).
+- DHF: exact integrals only (no `DF`/`CD` yet); Dirac–Coulomb only (no Gaunt/Breit).
 - No gradients or relaxed densities yet.

@@ -35,3 +35,10 @@ Both kinds of factors are always built and stored according to the
 <!-- END GENERATED -->
 
 On disk the factors are built and read in chunks whose size is set by `maxcore`.
+
+## Four-component (DHF) references
+
+With a DHF reference the correlated method uses exact Dirac–Coulomb integrals
+over the large and small components, $(LL|LL)$, $(SS|SS)$, $(SS|LL)$ and
+$(LL|SS)$, transformed to complex spinor integrals. RI and Cholesky
+decomposition are not available for DHF yet.

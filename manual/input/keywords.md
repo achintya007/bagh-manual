@@ -16,9 +16,11 @@ Every keyword can be given as a one-line `%keyword value` or inside any
 | `jkbasis` | str |  | Auxiliary basis for DF-SCF. Empty: chosen automatically. Also on the `!` line (`...jkfit`). |
 | `cd` | bool | `False` | Cholesky decomposition of the two-electron integrals for the correlated method (no auxiliary basis; SCF follows `df`). Also `! CD`. |
 | `cd_threshold` | float | `1e-05` | Cholesky decomposition threshold: largest remaining diagonal (Eh). |
-| `fc` | bool | `False` | Freeze core orbitals (standard chemical core). |
-| `fc_no` | int | `-1` | Number of frozen core orbitals; overrides `fc`. -1: not set. |
-| `hamiltonian` | `nonrel`, `sfx2c1e` | `nonrel` | One-electron Hamiltonian: `nonrel` or `sfx2c1e` (spin-free exact two-component, one-electron). Works with every method that uses an RHF reference. Also `! SFX2C1E`, or `x2c true` as in BAGH 0.x. |
+| `fc` | bool | `False` | Freeze core orbitals (standard chemical core; twice as many spinors for DHF). |
+| `fc_no` | int | `-1` | Number of frozen core orbitals (spinors for DHF); overrides `fc`. -1: not set. |
+| `reference` | `rhf`, `dhf` | `rhf` | Reference wavefunction: `rhf` or `dhf` (four-component Dirac-Hartree-Fock). Also `! DHF` (or `! SPINOR`, as in BAGH 0.x). |
+| `hamiltonian` | `auto`, `nonrel`, `sfx2c1e`, `dirac-coulomb` | `auto` | Hamiltonian. RHF: `nonrel` or `sfx2c1e` (spin-free exact two-component, one-electron; also `! SFX2C1E` or `x2c true`). DHF: `dirac-coulomb`. `auto`: the first one listed for the reference. |
+| `light_speed` | float | `0.0` | Speed of light (a.u.) for DHF. 0: the standard value (137.036). |
 
 ## Molecule
 
