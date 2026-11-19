@@ -20,4 +20,6 @@ The manual is licensed under the
 [Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/);
 see [LICENSE](LICENSE). You may share and adapt it, including commercially, if you
 give appropriate credit to the BAGH developers, link to the licence, and indicate
-if changes were made. The licence covers this manual only, not the BAGH program.
+if changes were made. The licence covers this manual only. **The BAGH program itself is not open
+source**: it is distributed under a restricted licence (similar to CFOUR's) and
+may be used only under a signed licence agreement with the BAGH developers.
