@@ -47,7 +47,7 @@ $E^{(2)}$ is reported (no spin components).
 |---|---|
 | References | RHF, DHF |
 | Hamiltonians | RHF: nonrel, sfx2c1e<br>DHF: dirac-coulomb |
-| Integrals | RHF: exact, ri, cd<br>DHF: exact |
+| Integrals | RHF: exact, ri, cd<br>DHF: exact, ri, cd |
 | Incore levels | 2, 3, 4, 5 |
 | Properties | none yet |
 <!-- END GENERATED -->
@@ -85,5 +85,5 @@ vectors and the SCF is exact. See [Integral approximations](../integrals.md).
 ## Limitations
 
 - RHF and DHF references (UHF, GHF and two-component spinor references: not yet ported).
-- DHF: exact integrals only (no `DF`/`CD` yet); Dirac–Coulomb only (no Gaunt/Breit).
+- DHF: Dirac–Coulomb only (no Gaunt/Breit).
 - No gradients or relaxed densities yet.

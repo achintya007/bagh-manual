@@ -38,7 +38,19 @@ On disk the factors are built and read in chunks whose size is set by `maxcore`.
 
 ## Four-component (DHF) references
 
-With a DHF reference the correlated method uses exact Dirac–Coulomb integrals
-over the large and small components, $(LL|LL)$, $(SS|SS)$, $(SS|LL)$ and
-$(LL|SS)$, transformed to complex spinor integrals. RI and Cholesky
-decomposition are not available for DHF yet.
+With a DHF reference the integrals are complex spinor integrals over the large
+and small components ($(LL|LL)$, $(SS|SS)$, $(SS|LL)$, $(LL|SS)$, Dirac–Coulomb).
+All three options are available:
+
+- **Exact**: the four-index spinor integrals.
+- **RI** (`DF true`): the SCF is density-fitted DHF (`jkbasis`), and the correlated
+  method uses spinor 3-centre integrals for both components with one auxiliary
+  basis (`auxbasis`) and one Coulomb metric, $(pq|rs) \approx \sum_P B^P_{pq} B^P_{rs}$.
+  Density-fitted DHF keeps its 3-centre integrals in memory (no out-of-core
+  version), so `maxcore` must be large enough for them.
+- **Cholesky** (`CD true`): the SCF is exact DHF. Each complex spinor pair density
+  is split into its real and imaginary parts, which have a real, positive
+  Coulomb matrix; that matrix is Cholesky-decomposed with the same algorithm as
+  for RHF, and small-component pairs are weighted by $(1/2c)^2$ so the threshold
+  reflects their size in the energy. The error goes to zero as `cd_threshold`
+  is tightened.

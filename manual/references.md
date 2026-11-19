@@ -20,7 +20,8 @@ spelling) or `%reference dhf`.
   orbitals (e.g. 2 for the O 1s shell); `fc_no` counts spinors.
 - `light_speed` changes the speed of light (default 137.036 a.u.). A very large
   value gives the non-relativistic limit, which is useful for checking results.
-- Density fitting (`DF`, `CD`) is not available with DHF yet.
+- RI (`DF`) and Cholesky (`CD`) are available; see
+  [Integral approximations](integrals.md).
 
 Reference: K. G. Dyall and K. Fægri, *Introduction to Relativistic Quantum
 Chemistry* (Oxford, 2007), ch. 14.
