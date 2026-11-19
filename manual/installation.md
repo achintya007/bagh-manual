@@ -8,6 +8,8 @@ with the BAGH developers, and then receives the installable package. The
 licence allows academic, non-commercial use by the licensed group; the program
 may not be passed on to others. Commercial use requires a separate licence.
 
+To request a licence, write to <achintya@chem.iitb.ac.in>.
+
 ## Installing
 
 <!-- TODO: fill in when the first release is distributed to licensees. -->

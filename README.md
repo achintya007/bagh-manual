@@ -23,3 +23,4 @@ give appropriate credit to the BAGH developers, link to the licence, and indicat
 if changes were made. The licence covers this manual only. **The BAGH program itself is not open
 source**: it is distributed under a restricted licence (similar to CFOUR's) and
 may be used only under a signed licence agreement with the BAGH developers.
+To request a licence, write to achintya@chem.iitb.ac.in.

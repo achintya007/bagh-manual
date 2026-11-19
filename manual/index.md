@@ -41,7 +41,8 @@ developer
   that of CFOUR: it is not open source, and it may be used only under a signed
   licence agreement with the BAGH developers. Academic, non-commercial use;
   no redistribution of source or binaries; commercial use needs a separate
-  licence; publications must cite BAGH. See [Installation](installation.md).
+  licence; publications must cite BAGH. To request a licence, write to
+  <achintya@chem.iitb.ac.in>; see also [Installation](installation.md).
 - **This manual** is licensed under
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). That licence covers the
   manual only, not the program.
