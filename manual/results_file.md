@@ -18,5 +18,10 @@ scripts instead of parsing the text output, whose layout may change.
 }
 ```
 
+With density fitting, `scf.auxiliary_basis` records the auxiliary basis per
+element for the SCF (`scf`) and the correlated method (`correlation`), how each
+was chosen (`input`, `matching`, `fallback`, `generated`) and the number of
+auxiliary functions (`naux`).
+
 Energies are in hartree. `schema_version` changes only when existing fields
 change meaning or are removed.

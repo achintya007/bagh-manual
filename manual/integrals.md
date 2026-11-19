@@ -10,9 +10,16 @@ $(pq|rs) \approx \sum_P L^P_{pq} L^P_{rs}$. BAGH offers two ways to make the fac
 | RI (density fitting) | `! DF` or `! RI`, or `df true` | density fitted with `jkbasis` | auxiliary basis `auxbasis` | choice of auxiliary basis |
 | Cholesky decomposition (CD) | `! CD`, or `cd true` | exact (or DF with `df true`) | pivoted Cholesky vectors of the AO integrals | `cd_threshold` (default $10^{-5}$) |
 
-- **RI** uses a pre-optimised auxiliary basis. If `auxbasis` / `jkbasis` are not
-  given, standard fitting bases for the orbital basis are chosen. Give them
-  explicitly when results must be reproducible across program versions.
+- **RI** uses pre-optimised auxiliary basis sets: `jkbasis` for the SCF and
+  `auxbasis` for the correlated method. If they are not given, BAGH (through
+  pyscf) chooses, per element, the fitting set made for the orbital basis
+  (e.g. `cc-pvdz-jkfit` / `cc-pvdz-ri` for `cc-pvdz`); if there is none, a stand-in
+  from another family (e.g. `def2-svp-ri` for `sto-3g`) or a generated
+  even-tempered set (e.g. for Dyall bases). The output section **Auxiliary basis
+  sets** lists the set used for every element, how it was chosen and the number
+  of auxiliary functions, and prints a warning for stand-ins and generated sets;
+  the same information is in the results file under `scf.auxiliary_basis`.
+  Give both explicitly when results must be reproducible across program versions.
 - **CD** needs no auxiliary basis: vectors are added until the largest remaining
   diagonal integral is below `cd_threshold`, so the error is controlled by one
   number and goes to zero as the threshold is tightened. At most $10\,n_\mathrm{AO}$
