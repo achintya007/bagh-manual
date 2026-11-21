@@ -29,7 +29,7 @@ with the amplitude equations in the spin-adapted form of BAGH 0.x / pyscf.
 | References | RHF |
 | Hamiltonians | RHF: nonrel, sfx2c1e |
 | Integrals | RHF: exact |
-| Incore levels | 3, 4, 5 |
+| Incore levels | 2, 3, 4, 5 |
 | Properties | none yet |
 <!-- END GENERATED -->
 
@@ -57,7 +57,11 @@ amplitude change, number of DIIS vectors) and the converged energies.
   - `incore 4`: $(ab|cd)$ on disk, read in batches each iteration (memory grows as
     $o v^3$);
   - `incore 3`: $(ab|cd)$ and $(ia|bc)$ on disk (memory grows as $o^2 v^2$, the
-    size of the amplitudes).
+    size of the amplitudes);
+  - `incore 2`: also $(ia|jb)$, $(ia|bj)$ and the stored amplitudes (the DIIS
+    history) on disk; the current and new amplitudes and the work arrays of one
+    iteration stay in memory. About half the memory of `incore 3`, with more disk
+    traffic.
   All levels give the same result. Put `scratch` on a fast local disk.
 - Core orbitals are frozen by default.
 
@@ -65,5 +69,5 @@ amplitude change, number of DIIS vectors) and the converged energies.
 
 - RHF reference and exact integrals only for now (RI / Cholesky and spinor
   references: to come).
-- `incore 2` (also $(ia|jb)$, $(ia|bj)$ and the amplitudes on disk) is not
-  available yet.
+- At `incore 2` the work arrays of one iteration (about a dozen arrays of the
+  size of the amplitudes) are still in memory.
