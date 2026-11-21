@@ -28,7 +28,7 @@ with the amplitude equations in the spin-adapted form of BAGH 0.x / pyscf.
 |---|---|
 | References | RHF |
 | Hamiltonians | RHF: nonrel, sfx2c1e |
-| Integrals | RHF: exact |
+| Integrals | RHF: exact, ri, cd |
 | Incore levels | 2, 3, 4, 5 |
 | Properties | none yet |
 <!-- END GENERATED -->
@@ -51,6 +51,13 @@ amplitude change, number of DIIS vectors) and the converged energies.
 ## Cost and practical advice
 
 - Cost scales as $O(o^2 v^4)$ per iteration.
+- RI (`DF true` or `! RI`, auxiliary basis `auxbasis`) and Cholesky (`CD true`,
+  threshold `cd_threshold`) use 3-centre factors $L^P_{pq}$ in place of the
+  four-index integrals, as BAGH 0.x does: $(ia|bc)$ and $(ab|cd)$ are never formed
+  or stored, and every term that needs them is evaluated from $L_{ov}$ and $L_{vv}$.
+  Disk and memory then grow only as $N_\mathrm{aux} v^2$ instead of $v^4$. Cholesky
+  CCSD tends to the exact-integral result as `cd_threshold` is lowered (water,
+  cc-pVDZ: $3\times10^{-7}$ $E_h$ at $10^{-4}$, $2\times10^{-9}$ $E_h$ at $10^{-7}$).
 - Memory follows the [incore level](../run_settings.md), chosen automatically from
   `maxcore` or set with `incore`:
   - `incore 5`: all integrals in memory (memory grows as $v^4$);
@@ -63,11 +70,13 @@ amplitude change, number of DIIS vectors) and the converged energies.
     iteration stay in memory. About half the memory of `incore 3`, with more disk
     traffic.
   All levels give the same result. Put `scratch` on a fast local disk.
+  With RI or Cholesky, levels 5, 4 and 3 are the same (no $(ia|bc)$ or $(ab|cd)$ to
+  move); at `incore 2` the factor $L_{vv}$ is on disk, read in batches of the
+  auxiliary index, together with $(ia|jb)$ and the DIIS history.
 - Core orbitals are frozen by default.
 
 ## Limitations
 
-- RHF reference and exact integrals only for now (RI / Cholesky and spinor
-  references: to come).
+- RHF reference only for now (spinor references: to come).
 - At `incore 2` the work arrays of one iteration (about a dozen arrays of the
   size of the amplitudes) are still in memory.
