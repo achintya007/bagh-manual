@@ -47,7 +47,7 @@ reported (no spin components).
 |  |  |
 |---|---|
 | References | RHF, DHF, X2CAMF |
-| Hamiltonians | RHF: nonrel, sfx2c1e<br>DHF: dirac-coulomb<br>X2CAMF: x2camf, x2camf-gaunt, x2camf-breit |
+| Hamiltonians | RHF: nonrel, sfx2c1e<br>DHF: dirac-coulomb<br>X2CAMF: x2camf, x2camf_sd, x2camf_axr, x2camf_au, x2cmp, sfmp, x2cmp_x1e, dirac_amf, cq_amf, 1e_amf, atm_fock, atm_x2e, 1e, sf1e |
 | Integrals | RHF: exact, ri, cd<br>DHF: exact, ri, cd<br>X2CAMF: exact, ri, cd |
 | Incore levels | 2, 3, 4, 5 |
 | Properties | none yet |

@@ -19,7 +19,10 @@ Every keyword can be given as a one-line `%keyword value` or inside any
 | `fc` | bool | `True` | Freeze core orbitals (standard chemical core; twice as many spinors for DHF). On by default (BAGH 0.x: off); `fc false` or `! NOFC` for all-electron. |
 | `fc_no` | int | `-1` | Number of frozen core orbitals (spinors for DHF); overrides `fc`. -1: not set. |
 | `reference` | `rhf`, `dhf`, `x2camf` | `rhf` | Reference wavefunction: `rhf`, `dhf` (four-component Dirac-Hartree-Fock; also `! DHF`, or `! SPINOR` as in BAGH 0.x) or `x2camf` (two-component spinor HF with the X2CAMF Hamiltonian; also `! X2CAMF`, or `! SOC-X2CAMF` as in BAGH 0.x). |
-| `hamiltonian` | `auto`, `nonrel`, `sfx2c1e`, `dirac-coulomb`, `x2camf`, `x2camf-gaunt`, `x2camf-breit` | `auto` | Hamiltonian. RHF: `nonrel` or `sfx2c1e` (spin-free exact two-component, one-electron; also `! SFX2C1E` or `x2c true`). DHF: `dirac-coulomb`. X2CAMF: `x2camf` (Dirac-Coulomb atomic mean field), `x2camf-gaunt`, `x2camf-breit` (Gaunt / Breit terms in the atomic mean field). `auto`: the first one listed for the reference. |
+| `hamiltonian` | `auto`, `nonrel`, `sfx2c1e`, `dirac-coulomb`, `x2camf`, `x2camf_sd`, `x2camf_axr`, `x2camf_au`, `x2cmp`, `sfmp`, `x2cmp_x1e`, `dirac_amf`, `cq_amf`, `1e_amf`, `atm_fock`, `atm_x2e`, `1e`, `sf1e` | `auto` | Hamiltonian. RHF: `nonrel` or `sfx2c1e` (spin-free exact two-component, one-electron; also `! SFX2C1E` or `x2c true`). DHF: `dirac-coulomb`. X2CAMF reference: set the X2C level with `x2c_type` instead. `auto`: the default for the reference. |
+| `x2c_type` | `x2camf`, `x2camf_sd`, `x2camf_axr`, `x2camf_au`, `x2cmp`, `sfmp`, `x2cmp_x1e`, `dirac_amf`, `cq_amf`, `1e_amf`, `atm_fock`, `atm_x2e`, `1e`, `sf1e` | `x2camf` | X2C level for the X2CAMF (two-component) reference; see the X2C levels table. |
+| `gaunt` | bool | `False` | X2CAMF reference: include the Gaunt interaction in the atomic mean field. |
+| `breit` | bool | `False` | X2CAMF reference: include the full Breit interaction (Gaunt + gauge term) in the atomic mean field. |
 | `light_speed` | float | `0.0` | Speed of light (a.u.) for DHF and X2CAMF. 0: the standard value (137.036). |
 
 ## Molecule

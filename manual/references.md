@@ -38,8 +38,17 @@ exact two-component theory with spin–orbit coupling from atomic mean fields
   spinors.
 - `fc true` freezes twice as many spinors as there are core orbitals; `fc_no`
   counts spinors.
-- Hamiltonian variants: `x2camf` (default), `x2camf-gaunt` and `x2camf-breit`
-  add the Gaunt or Breit interaction to the atomic mean field.
+- The **X2C level** is a separate keyword, `x2c_type` (as in BAGH 0.x), default
+  `x2camf`; the levels are listed below. `gaunt true` adds the Gaunt interaction
+  and `breit true` the full Breit interaction (Gaunt + gauge term) to the atomic
+  mean field (they have no effect for the purely one-electron levels `1e`, `sf1e`).
+  Example:
+
+  ```text
+  ! X2CAMF MP2 cc-pvtz
+  %x2c_type x2cmp
+  %gaunt true
+  ```
 - Exact, RI (`DF`) and Cholesky (`CD`) integrals are available. RI and Cholesky
   use the same real 3-centre factors as RHF, applied to the α and β parts of each
   spinor.
@@ -48,6 +57,31 @@ References: L. Cheng and J. Gauss, *J. Chem. Phys.* **135**, 084114 (2011);
 J. Liu and L. Cheng, *J. Chem. Phys.* **148**, 144108 (2018);
 K. Zhang and L. Cheng, *J. Phys. Chem. A* **126**, 4537 (2022).
 
+### X2C levels (`x2c_type`)
+
+<!-- GENERATED:x2c-levels -->
+| x2c_type | Meaning |
+|---|---|
+| `x2camf` (default) | X2C with atomic mean-field (AMF) spin-orbit integrals (default, as BAGH 0.x) |
+| `x2camf_sd` | variant of x2camf (socutils `x2camf_sd`) |
+| `x2camf_axr` | variant of x2camf (socutils `x2camf_axr`) |
+| `x2camf_au` | variant of x2camf (socutils `x2camf_au`) |
+| `x2cmp` | X2C with an atomic model potential (scalar and spin-orbit two-electron picture-change corrections) |
+| `sfmp` | spin-free version of x2cmp |
+| `x2cmp_x1e` | variant of x2cmp (socutils `x2cmp_x1e`) |
+| `dirac_amf` | atomic mean field from four-component atomic Dirac-HF (socutils `dirac_amf`) |
+| `cq_amf` | atomic mean-field variant (socutils `cq_amf`) |
+| `1e_amf` | atomic mean-field variant (socutils `1e_amf`) |
+| `atm_fock` | atomic Fock-matrix variant (socutils `atm_fock`) |
+| `atm_x2e` | atomic two-electron X2C variant (socutils `atm_x2e`) |
+| `1e` | one-electron X2C including spin-orbit coupling (X2C1e) |
+| `sf1e` | spin-free one-electron X2C (same physics as RHF with sfx2c1e, in spinors) |
+<!-- END GENERATED -->
+
+The levels are those of socutils' `X2CMP`; see socutils for their exact
+definitions. (`amfx2c_a1e` exists in socutils but currently fails there and is
+not offered.)
+
 ## Hamiltonians
 
 | `hamiltonian` | Meaning | How to request |
@@ -55,8 +89,7 @@ K. Zhang and L. Cheng, *J. Phys. Chem. A* **126**, 4537 (2022).
 | `nonrel` | non-relativistic (default for RHF) | — |
 | `sfx2c1e` | spin-free exact two-component Hamiltonian in its one-electron variant (SFX2C1e): scalar-relativistic effects (RHF) | `%hamiltonian sfx2c1e`, `! SFX2C1E`, or `x2c true` (BAGH 0.x keyword) |
 | `dirac-coulomb` | four-component Dirac–Coulomb (DHF; the only choice for DHF, used automatically) | `! DHF` |
-| `x2camf` | two-component X2CAMF, spin–orbit coupling from atomic mean fields (Coulomb) | `! X2CAMF` |
-| `x2camf-gaunt`, `x2camf-breit` | X2CAMF with the Gaunt or Breit term in the atomic mean field | `%hamiltonian x2camf-gaunt` |
+| X2C levels | two-component X2C Hamiltonians for the X2CAMF reference (table above) | `! X2CAMF` and `%x2c_type ...` |
 
 SFX2C1e replaces only the one-electron part of the Hamiltonian; the two-electron
 integrals are not changed. It therefore works with **every method that uses an
