@@ -3,8 +3,8 @@
 ## What it computes
 
 Second-order Møller–Plesset perturbation theory (MP2) correlation energy for a
-closed-shell RHF reference (split into opposite-spin and same-spin parts) or a
-four-component DHF reference.
+closed-shell RHF reference (split into opposite-spin and same-spin parts), a
+four-component DHF reference or a two-component X2CAMF reference.
 
 ## Theory and references
 
@@ -17,8 +17,8 @@ $$
 with $E_\mathrm{OS} = \sum (ia|jb)^2 / D_{ijab}$ and
 $E_\mathrm{SS} = \sum (ia|jb)\left[(ia|jb) - (ib|ja)\right] / D_{ijab}$.
 
-With a DHF reference the sums run over positive-energy spinors and the integrals
-are complex:
+With a DHF or X2CAMF reference the sums run over spinors (for DHF the
+positive-energy ones) and the integrals are complex:
 
 $$
 E^{(2)} = \frac{1}{4}\sum_{ijab}
@@ -26,8 +26,9 @@ E^{(2)} = \frac{1}{4}\sum_{ijab}
 \qquad \langle ij\|ab\rangle = (ia|jb) - (ib|ja),
 $$
 
-with Dirac–Coulomb integrals over the large and small components. Only
-$E^{(2)}$ is reported (no spin components).
+with Dirac–Coulomb integrals over the large and small components (DHF) or
+Coulomb integrals over two-component spinors (X2CAMF). Only $E^{(2)}$ is
+reported (no spin components).
 
 - C. Møller and M. S. Plesset, *Phys. Rev.* **46**, 618 (1934).
 - A. Szabo and N. S. Ostlund, *Modern Quantum Chemistry*, eq. (6.74).
@@ -45,9 +46,9 @@ $E^{(2)}$ is reported (no spin components).
 <!-- GENERATED:method:MP2 -->
 |  |  |
 |---|---|
-| References | RHF, DHF |
-| Hamiltonians | RHF: nonrel, sfx2c1e<br>DHF: dirac-coulomb |
-| Integrals | RHF: exact, ri, cd<br>DHF: exact, ri, cd |
+| References | RHF, DHF, X2CAMF |
+| Hamiltonians | RHF: nonrel, sfx2c1e<br>DHF: dirac-coulomb<br>X2CAMF: x2camf, x2camf-gaunt, x2camf-breit |
+| Integrals | RHF: exact, ri, cd<br>DHF: exact, ri, cd<br>X2CAMF: exact, ri, cd |
 | Incore levels | 2, 3, 4, 5 |
 | Properties | none yet |
 <!-- END GENERATED -->
@@ -84,6 +85,6 @@ vectors and the SCF is exact. See [Integral approximations](../integrals.md).
 
 ## Limitations
 
-- RHF and DHF references (UHF, GHF and two-component spinor references: not yet ported).
+- RHF, DHF and X2CAMF references (UHF and GHF: not yet ported).
 - DHF: Dirac–Coulomb only (no Gaunt/Breit).
 - No gradients or relaxed densities yet.

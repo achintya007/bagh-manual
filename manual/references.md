@@ -26,6 +26,28 @@ spelling) or `%reference dhf`.
 Reference: K. G. Dyall and K. Fægri, *Introduction to Relativistic Quantum
 Chemistry* (Oxford, 2007), ch. 14.
 
+## X2CAMF (two-component)
+
+Closed-shell two-component spinor Hartree–Fock with the X2CAMF Hamiltonian:
+exact two-component theory with spin–orbit coupling from atomic mean fields
+(computed with socutils, as in BAGH 0.x). Request it with `! X2CAMF`
+(or `! SOC-X2CAMF ... spinor`, the BAGH 0.x spelling) or `%reference x2camf`.
+
+- Orbitals are complex two-component spinors; there are no negative-energy
+  states. Correlated methods use the ordinary Coulomb integrals over these
+  spinors.
+- `fc true` freezes twice as many spinors as there are core orbitals; `fc_no`
+  counts spinors.
+- Hamiltonian variants: `x2camf` (default), `x2camf-gaunt` and `x2camf-breit`
+  add the Gaunt or Breit interaction to the atomic mean field.
+- Exact, RI (`DF`) and Cholesky (`CD`) integrals are available. RI and Cholesky
+  use the same real 3-centre factors as RHF, applied to the α and β parts of each
+  spinor.
+
+References: L. Cheng and J. Gauss, *J. Chem. Phys.* **135**, 084114 (2011);
+J. Liu and L. Cheng, *J. Chem. Phys.* **148**, 144108 (2018);
+K. Zhang and L. Cheng, *J. Phys. Chem. A* **126**, 4537 (2022).
+
 ## Hamiltonians
 
 | `hamiltonian` | Meaning | How to request |
@@ -33,6 +55,8 @@ Chemistry* (Oxford, 2007), ch. 14.
 | `nonrel` | non-relativistic (default for RHF) | — |
 | `sfx2c1e` | spin-free exact two-component Hamiltonian in its one-electron variant (SFX2C1e): scalar-relativistic effects (RHF) | `%hamiltonian sfx2c1e`, `! SFX2C1E`, or `x2c true` (BAGH 0.x keyword) |
 | `dirac-coulomb` | four-component Dirac–Coulomb (DHF; the only choice for DHF, used automatically) | `! DHF` |
+| `x2camf` | two-component X2CAMF, spin–orbit coupling from atomic mean fields (Coulomb) | `! X2CAMF` |
+| `x2camf-gaunt`, `x2camf-breit` | X2CAMF with the Gaunt or Breit term in the atomic mean field | `%hamiltonian x2camf-gaunt` |
 
 SFX2C1e replaces only the one-electron part of the Hamiltonian; the two-electron
 integrals are not changed. It therefore works with **every method that uses an

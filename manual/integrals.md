@@ -61,3 +61,12 @@ All three options are available:
   for RHF, and small-component pairs are weighted by $(1/2c)^2$ so the threshold
   reflects their size in the energy. The error goes to zero as `cd_threshold`
   is tightened.
+
+## Two-component (X2CAMF) references
+
+The two-electron integrals over X2CAMF spinors are ordinary Coulomb integrals.
+Exact integrals are transformed directly to complex spinor integrals. RI and
+Cholesky use the same real 3-centre factors as for RHF (the Cholesky vectors are
+identical to BAGH 0.x's); each spinor is split into its α and β parts in the
+scalar basis, $B^P_{pq} = \sum_\sigma C^{\sigma *}_{\mu p} L^P_{\mu\nu} C^\sigma_{\nu q}$.
+With `DF true` the SCF is density fitted too (`jkbasis`).

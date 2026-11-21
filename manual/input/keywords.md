@@ -18,9 +18,9 @@ Every keyword can be given as a one-line `%keyword value` or inside any
 | `cd_threshold` | float | `1e-05` | Cholesky decomposition threshold: largest remaining diagonal (Eh). |
 | `fc` | bool | `True` | Freeze core orbitals (standard chemical core; twice as many spinors for DHF). On by default (BAGH 0.x: off); `fc false` or `! NOFC` for all-electron. |
 | `fc_no` | int | `-1` | Number of frozen core orbitals (spinors for DHF); overrides `fc`. -1: not set. |
-| `reference` | `rhf`, `dhf` | `rhf` | Reference wavefunction: `rhf` or `dhf` (four-component Dirac-Hartree-Fock). Also `! DHF` (or `! SPINOR`, as in BAGH 0.x). |
-| `hamiltonian` | `auto`, `nonrel`, `sfx2c1e`, `dirac-coulomb` | `auto` | Hamiltonian. RHF: `nonrel` or `sfx2c1e` (spin-free exact two-component, one-electron; also `! SFX2C1E` or `x2c true`). DHF: `dirac-coulomb`. `auto`: the first one listed for the reference. |
-| `light_speed` | float | `0.0` | Speed of light (a.u.) for DHF. 0: the standard value (137.036). |
+| `reference` | `rhf`, `dhf`, `x2camf` | `rhf` | Reference wavefunction: `rhf`, `dhf` (four-component Dirac-Hartree-Fock; also `! DHF`, or `! SPINOR` as in BAGH 0.x) or `x2camf` (two-component spinor HF with the X2CAMF Hamiltonian; also `! X2CAMF`, or `! SOC-X2CAMF` as in BAGH 0.x). |
+| `hamiltonian` | `auto`, `nonrel`, `sfx2c1e`, `dirac-coulomb`, `x2camf`, `x2camf-gaunt`, `x2camf-breit` | `auto` | Hamiltonian. RHF: `nonrel` or `sfx2c1e` (spin-free exact two-component, one-electron; also `! SFX2C1E` or `x2c true`). DHF: `dirac-coulomb`. X2CAMF: `x2camf` (Dirac-Coulomb atomic mean field), `x2camf-gaunt`, `x2camf-breit` (Gaunt / Breit terms in the atomic mean field). `auto`: the first one listed for the reference. |
+| `light_speed` | float | `0.0` | Speed of light (a.u.) for DHF and X2CAMF. 0: the standard value (137.036). |
 
 ## Molecule
 

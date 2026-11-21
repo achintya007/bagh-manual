@@ -19,3 +19,4 @@ pip install bagh-<version>-<platform>.whl
 ```
 
 Runtime dependencies (installed automatically): numpy, h5py, pyscf, pyyaml.
+X2CAMF calculations also need socutils (with its bundled X2CAMF library).
