@@ -41,6 +41,16 @@ Every keyword can be given as a one-line `%keyword value` or inside any
 | `scf_conv` | float | `1e-10` | SCF energy convergence threshold (Eh). |
 | `scf_maxiter` | int | `100` | Maximum number of SCF iterations. |
 
+## Coupled cluster
+
+| Keyword | Type / values | Default | Meaning |
+|---|---|---|---|
+| `cc_convergence` | float | `1e-10` | Coupled cluster: convergence of the correlation energy (Eh) between iterations. |
+| `cc_convergence_r` | float | `1e-08` | Coupled cluster: convergence of the root-mean-square amplitude change. |
+| `cc_max_cycle` | int | `100` | Coupled cluster: maximum number of iterations. |
+| `diis` | bool | `True` | Coupled cluster: DIIS extrapolation of the amplitudes. |
+| `diis_space` | int | `8` | Coupled cluster: number of DIIS vectors kept. |
+
 ## Resources (memory, disk, threads)
 
 | Keyword | Type / values | Default | Meaning |
